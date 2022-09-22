@@ -27,6 +27,7 @@ int main(void){
 
 std::vector<Node<char>*> depthFirst(Node<char> *root){
   std::vector<Node<char>*> stack;
+  if(root == nullptr) return stack;
   stack.push_back(root);
   while(!stack.empty()){
     Node<char> *curr = stack.back();
