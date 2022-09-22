@@ -19,7 +19,9 @@ int main(void){
   a->right = c;
   c->right = f;
   
-  std::vector<Node<char>*> _ = depthFirst(a);
+  std::vector<Node<char>*> result = depthFirst(a);
+  if(result.empty()) std::cout << "ok" << std::endl;
+  else std::cout << "error" << std::endl;
   return 0;
 }
 
@@ -31,8 +33,8 @@ std::vector<Node<char>*> depthFirst(Node<char> *root){
     stack.pop_back();
     std::cout << curr->getData() << std::endl;
 
-    if(curr->left != nullptr) stack.push_back(curr->left);
     if(curr->right != nullptr) stack.push_back(curr->right);
+    if(curr->left != nullptr) stack.push_back(curr->left);
   }
   return stack;
 }
