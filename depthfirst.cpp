@@ -3,7 +3,7 @@
 #include <vector>
 #include "node.cpp"
 
-void depthFirstIterative(Node<char> *root);
+std::vector<Node<char>*> depthFirstIterative(Node<char> *root);
 std::vector<Node<char>*> depthFirstRecursive(Node<char> *root);
 
 int main(void){
@@ -20,7 +20,11 @@ int main(void){
   a->right = c;
   c->right = f;
 
-  depthFirstIterative(a);
+  std::vector<Node<char>*> resultInterative = depthFirstIterative(a);
+  while(!resultInterative.empty()){
+    std::cout << resultInterative.front()->getData() << std::endl;
+    resultInterative.erase(resultInterative.begin());
+  }
   std::cout << '\n';
   std::vector<Node<char>*> resultRecursive = depthFirstRecursive(a);
   while(!resultRecursive.empty()){
@@ -31,18 +35,24 @@ int main(void){
   return 0;
 }
 
-void depthFirstIterative(Node<char> *root){
+std::vector<Node<char>*> depthFirstIterative(Node<char> *root){
   std::vector<Node<char>*> stack;
-  if(root == nullptr) return;
+  std::vector<Node<char>*> result;
+  if(root == nullptr) return stack;
   stack.push_back(root);
   while(!stack.empty()){
     Node<char> *curr = stack.back();
+    result.push_back(stack.back());
     stack.pop_back();
-    std::cout << curr->getData() << std::endl;
 
-    if(curr->right != nullptr) stack.push_back(curr->right);
-    if(curr->left != nullptr) stack.push_back(curr->left);
+    if(curr->right != nullptr){
+      stack.push_back(curr->right);
+    }
+    if(curr->left != nullptr){
+      stack.push_back(curr->left);
+    }
   }
+  return result;
 }
 
 std::vector<Node<char>*> depthFirstRecursive(Node<char> *root){
