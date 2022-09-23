@@ -2,6 +2,7 @@
 #include <typeinfo>
 #include <vector>
 #include "node.cpp"
+#include "utils.cpp"
 
 std::vector<Node<char>*> depthFirstIterative(Node<char> *root);
 std::vector<Node<char>*> depthFirstRecursive(Node<char> *root);
@@ -21,16 +22,10 @@ int main(void){
   c->right = f;
 
   std::vector<Node<char>*> resultInterative = depthFirstIterative(a);
-  while(!resultInterative.empty()){
-    std::cout << resultInterative.front()->getData() << std::endl;
-    resultInterative.erase(resultInterative.begin());
-  }
+  utils::print_vector(resultInterative);
   std::cout << '\n';
   std::vector<Node<char>*> resultRecursive = depthFirstRecursive(a);
-  while(!resultRecursive.empty()){
-    std::cout << resultRecursive.front()->getData() << std::endl;
-    resultRecursive.erase(resultRecursive.begin());
-  }
+  utils::print_vector(resultRecursive);
   
   return 0;
 }
