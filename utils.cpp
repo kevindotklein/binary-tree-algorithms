@@ -1,6 +1,6 @@
 #include <iostream>
 #include <queue>
-#include <vector>
+#include <stack>
 
 namespace utils{
   void print_queue(std::queue<Node<char>*> queue){
@@ -11,11 +11,11 @@ namespace utils{
     }
   }
 
-  void print_vector(std::vector<Node<char>*> vector){
-    std::vector<Node<char>*> tmp = vector;
+  void print_stack(std::stack<Node<char>*> stack){
+    std::stack<Node<char>*> tmp = stack;
     while(!tmp.empty()){
-      std::cout << tmp.front()->getData() << std::endl;
-      tmp.erase(tmp.begin());
+      std::cout << tmp.    //->getData() << std::endl;
+      tmp.pop();
     }
   }
 }
