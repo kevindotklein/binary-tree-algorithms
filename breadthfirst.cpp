@@ -20,6 +20,7 @@ int main(void){
   a->right = c;
   c->right = f;
 
+  std::cout << "final queue: " << std::endl;
   std::queue<Node<char>*> result = breadthFirst(a);
   utils::print_queue(result);
   

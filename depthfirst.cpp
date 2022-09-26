@@ -4,8 +4,7 @@
 #include "node.cpp"
 #include "utils.cpp"
 
-std::stack<Node<char>*> depthFirstIterative(Node<char> *root);
-std::stack<Node<char>*> depthFirstRecursive(Node<char> *root);
+std::stack<Node<char>*> depthFirst(Node<char> *root);
 
 int main(void){
   Node<char> *a = new Node<char>('a');
@@ -21,16 +20,14 @@ int main(void){
   a->right = c;
   c->right = f;
 
-  std::stack<Node<char>*> resultInterative = depthFirstIterative(a);
-  utils::print_stack(resultInterative);
-  //std::cout << '\n';
-  //std::stack<Node<char>*> resultRecursive = depthFirstRecursive(a);
-  //utils::print_vector(resultRecursive);
+  std::stack<Node<char>*> result = depthFirst(a);
+  std::cout << "final stack: " << std::endl;
+  utils::print_stack(result);
   
   return 0;
 }
 
-std::stack<Node<char>*> depthFirstIterative(Node<char> *root){
+std::stack<Node<char>*> depthFirst(Node<char> *root){
   std::stack<Node<char>*> stack;
   std::stack<Node<char>*> result;
   if(root == nullptr) return stack;
@@ -49,18 +46,4 @@ std::stack<Node<char>*> depthFirstIterative(Node<char> *root){
   }
   return result;
 }
-/*
-std::stack<Node<char>*> depthFirstRecursive(Node<char> *root){
-  std::stack<Node<char>*> stack;
-  if(root == nullptr) return stack;
 
-  std::stack<Node<char>*> left = depthFirstRecursive(root->left);
-  std::stack<Node<char>*> right = depthFirstRecursive(root->right);
-
-  std::stack<Node<char>*> resultStack;
-  resultStack.push(root);
-  resultStack.insert(resultStack.begin()+1, left.begin(), left.end());
-  resultStack.insert(resultStack.end(), right.begin(), right.end());
-  return resultStack;
-}
-*/

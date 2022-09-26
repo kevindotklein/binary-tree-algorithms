@@ -14,7 +14,7 @@ namespace utils{
   void print_stack(std::stack<Node<char>*> stack){
     std::stack<Node<char>*> tmp = stack;
     while(!tmp.empty()){
-      std::cout << tmp.    //->getData() << std::endl;
+      std::cout << tmp.top()->getData() << std::endl;
       tmp.pop();
     }
   }
